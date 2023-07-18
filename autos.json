@@ -1,0 +1,36 @@
+{
+  "array": [
+    {
+      "id": 1,
+      "img": "https://acnews.blob.core.windows.net/imgnews/medium/NAZ_852c4c2a6c234c6bbad3678960b2f86b.jpg",
+      "nombre": "Ford",
+      "modelo": "Mustang",
+      "año": 2009,
+      "precio": 28000
+    },
+    {
+      "id": 2,
+      "img": "https://cdn.motor1.com/images/mgl/bgzV2k/s1/2024-chevrolet-corvette-e-ray.jpg",
+      "nombre": "Chevrolet",
+      "modelo": "Corvette",
+      "año": 2011,
+      "precio": 22000
+    },
+    {
+      "id": 3,
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c7/R12TL.JPG",
+      "nombre": "Renault",
+      "modelo": "12",
+      "año": 1971,
+      "precio": 7000
+    },
+    {
+      "id": 4,
+      "img": "https://autotest.com.ar/wp-content/uploads/2022/10/Renault-Sandero-Brasil.jpg",
+      "nombre": "Renault",
+      "modelo": "Sandero",
+      "año": 2011,
+      "precio": 7000
+    }
+  ]
+}
