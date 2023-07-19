@@ -14,13 +14,6 @@ body {
   color: whitesmoke;
   border-radius: 10px;
 }
-.btn-carrito,
-.btn,
-.btn-primary {
-  color: white;
-  padding: 12px;
-  background-color: rgb(200, 10, 10);
-}
 .divisor button {
   border: none;
   border-radius: 10px;
