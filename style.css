@@ -1,6 +1,11 @@
-h1,
-h2 {
-  font-family: sans-serif;
+body {
+  font-family: 'Outfit', sans-serif;
+}
+.pagina-inicial {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
+  grid-template-rows: auto;
+  grid-gap: 1rem;
 }
 .divisor {
   background-color: rgb(0, 0, 0);
@@ -9,9 +14,15 @@ h2 {
   color: whitesmoke;
   border-radius: 10px;
 }
+.btn-carrito,
+.btn,
+.btn-primary {
+  color: white;
+  padding: 12px;
+  background-color: rgb(200, 10, 10);
+}
 .divisor button {
   border: none;
-  font-weight: 900;
   border-radius: 10px;
   padding: 0.6rem;
   background: linear-gradient(to right, rgb(120, 0, 0), rgb(200, 10, 10));
@@ -19,13 +30,9 @@ h2 {
   margin: 0.5rem 0rem;
 }
 .divisor button:hover {
-  border: none;
   transition: 0.2s all;
-  font-weight: 900;
-  border-radius: 10px;
-  padding: 0.6rem;
   background: linear-gradient(to right, rgb(255, 188, 5), rgb(228, 202, 202));
-  color: black;
+  color: rgb(61, 61, 61);
   margin: 0.5rem 0rem;
 }
 
@@ -33,6 +40,9 @@ h2 {
   max-width: 100%;
   border: 0.1px solid white;
   border-radius: 10px;
+}
+.imagen-auto-cart {
+  width: 100%;
 }
 .pagina-detalle {
   padding: 10px;
@@ -47,8 +57,50 @@ h2 {
 }
 .back {
   margin: 0.5rem;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 0.4rem;
   border: none;
   font-weight: bolder;
+}
+
+.btn-product-detail-contact,
+.btn-product-detail-add-to-cart {
+  background: linear-gradient(180deg, rgb(150, 0, 0), rgb(230, 0, 0));
+  margin: 0.4rem 0rem;
+  border-radius: 8px;
+  color: whitesmoke;
+  font-size: 1rem;
+  text-align: start;
+  width: 90%;
+  font-weight: 900;
+  padding: 10px;
+  border: none;
+}
+.btn-product-detail-contact:hover,
+.btn-product-detail-add-to-cart:hover {
+  background: linear-gradient(180deg, rgb(243, 138, 138), rgb(255, 255, 255));
+  color: black;
+  transition: 0.4s all;
+}
+
+.btn-product-detail-div {
+  display: flex;
+  flex-direction: column;
+}
+.card-carrito {
+  margin: 0.3em;
+  color: black;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: rgb(179, 179, 179);
+}
+.card-carrito:hover {
+  background-color: black;
+  color: white;
+  transition: 0.5s all;
+}
+.card-carrito img {
+  box-shadow: 0px 0px 12px 1px gray;
+  margin-bottom: 1rem;
+  border-radius: 10px;
 }

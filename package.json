@@ -2,5 +2,8 @@
   "name": "js",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@popperjs/core": "^2.11.7",
+    "bootstrap": "5.3.0"
+  }
 }
