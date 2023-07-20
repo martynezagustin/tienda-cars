@@ -136,6 +136,13 @@ function actualizar() {
   if (autosCart.length === 0) {
     carrito.innerHTML = `<p>Aún no cuentas con ningún auto añadido al carrito.</p>`;
   } else {
+    //boton de vaciar carrito
+    const btnEmpty = document.createElement('button');
+    btnEmpty.textContent = 'VACIAR CARRITO';
+    btnEmpty.classList.add('btn-danger');
+    btnEmpty.classList.add('btn');
+    btnEmpty.classList.add('mt-4');
+    btnEmpty.addEventListener('click', vaciarCarrito);
     autosCart.forEach((auto) => {
       const card = document.createElement('div');
       card.classList.add('card-carrito');
@@ -151,6 +158,7 @@ function actualizar() {
         botoncito.addEventListener('click', eliminarAuto);
       });
     });
+    carrito.appendChild(btnEmpty);
   }
 }
 
@@ -163,6 +171,15 @@ function eliminarAuto(e) {
   let confirmar = confirm('Deseas remover este auto?');
   if (confirmar) {
     alert('Eliminado con éxito');
+    actualizar();
+  }
+}
+
+function vaciarCarrito() {
+  let confirmar = confirm('Desea eliminar todo su carrito?');
+  if (confirmar) {
+    autosCart.splice(0, autosCart.length);
+    alert('Carrito eliminado con éxito.');
     actualizar();
   }
 }
