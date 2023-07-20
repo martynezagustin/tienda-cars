@@ -88,11 +88,24 @@ function addToCart(e) {
     (auto) => auto.id === parseInt(e.target.id)
   );
   if (autoExistente) {
-    alert('Cómo vas a agregar un auto dos veces bobo?');
+    Toastify({
+      text: '¿Cómo vas a agregar un auto dos veces bobo?',
+      style: {
+        background: 'red',
+      },
+      duration: 2000,
+    }).showToast();
   } else {
-    alert(
-      autoEncontrado.nombre + ' ' + autoEncontrado.modelo + ' añadido to Cart'
-    );
+    Toastify({
+      text:
+        autoEncontrado.nombre +
+        ' ' +
+        autoEncontrado.modelo +
+        ' añadido al carrito 🚘',
+      style: {
+        background: 'green',
+      },
+    }).showToast();
     autosCart.push(autoEncontrado);
     actualizar();
   }
@@ -113,7 +126,7 @@ function purchaseCar(e) {
                             <p>${autoAComprar.descripcion}</p>
                             <div class="btn-product-detail-div">
                             <button class="btn-product-detail-contact"> CONTACTARME CON EL VENDEDOR </button>
-                            <button class="btn-product-detail-add-to-cart"> AGREGAR A MI CARRITO </button>
+                            <button class="btn-product-detail-add-to-cart" id=${autoAComprar.id}> AGREGAR A MI CARRITO </button>
                             </div>
                             `;
   divDetalle.append(paginaDetail);
@@ -123,6 +136,10 @@ function purchaseCar(e) {
       appDiv.style.display = 'block';
       paginaDetail.style.display = 'none';
     });
+  });
+  const btnAdd = document.querySelectorAll('.btn-product-detail-add-to-cart');
+  btnAdd.forEach((botoncito) => {
+    botoncito.addEventListener('click', addToCart);
   });
   appDiv.style.display = 'none';
 }
