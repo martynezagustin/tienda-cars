@@ -128,9 +128,11 @@ function purchaseCar(e) {
 }
 
 const carrito = document.querySelector('.offcanvas-body');
+const titleCarrito = document.querySelector('.offcanvas-title');
 
 function actualizar() {
   carrito.innerHTML = '';
+  titleCarrito.innerHTML = `Carrito de productos (${autosCart.length})`;
   if (autosCart.length === 0) {
     carrito.innerHTML = `<p>Aún no cuentas con ningún auto añadido al carrito.</p>`;
   } else {
