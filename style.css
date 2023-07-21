@@ -47,9 +47,12 @@ body {
 }
 .pagina-detalle img {
   width: 50%;
+  margin: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 12px 1px gray;
 }
-.back {
-  margin: 0.5rem;
+.pagina-detalle .back {
+  margin: 1rem;
   border-radius: 5px;
   padding: 0.4rem;
   border: none;

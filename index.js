@@ -118,7 +118,7 @@ function purchaseCar(e) {
   paginaDetail.classList.add('pagina-detalle');
   const autoAComprar = array.find((auto) => auto.id === parseInt(e.target.id));
   paginaDetail.innerHTML = `<div>
-  <button class="back">&#8592 BACK </button>
+  <button class="back">&#8592 ATRÁS </button>
   </div>
   <img src=${autoAComprar.img}>
   <h1>${autoAComprar.nombre}</h1>
