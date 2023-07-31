@@ -29,7 +29,7 @@ let array = [
   },
   {
     id: 3,
-    img: 'https://fotos.perfil.com/2023/02/19/trim/1280/720/renault-12-1512623.jpg',
+    img: 'https://cdn.motor1.com/images/mgl/Mk3qz6/s1/renault-12-tl-de-1994-en-la-planta-de-santa-isabel-cordoba.-ph-renault-argentina..jpg',
     nombre: 'Renault',
     modelo: '12',
     año: 1971,
@@ -39,21 +39,32 @@ let array = [
   },
   {
     id: 4,
-    img: 'https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2022/03/renault-sandero-2645095.jpg?tf=3840x',
+    img: 'https://cdn.motor1.com/images/mgl/P33GEr/s1/004982_hernandopollicelli_sandero-rs-grapsas.webp',
     nombre: 'Renault',
     modelo: 'Sandero',
     año: 2011,
     descripcion:
       'Uf un sanderito como el de la tía es el ideal para viajes de larga distancia. Viaja a Buenos Aires, Tucumán, o La Quiaca con este fenomenal vehículo.',
-    precio: parseFloat(7000),
+    precio: parseFloat(13000),
   },
 ];
 
 let autosCart = [];
+let contenidoGenerado = false;
+const carrito = document.querySelector('.offcanvas-body');
+const titleCarrito = document.querySelector('.offcanvas-title');
+const divDetalle = document.getElementById('pagina-detail');
+//filtrar por categoria
+const botonFilter = document.querySelectorAll('.button-filter');
+//add to cart
+const botoncito = document.querySelectorAll('.btn-add');
+//boton de compra
+const botoncitoCompra = document.querySelectorAll('.btn-purchase');
+//boton de filtrar todas
+const botonGenerarTodas = document.getElementById('btn-generar-todas');
 
-generarAutos();
-
-function generarAutos() {
+const generarAllCategories = () => {
+  limpiar();
   array.forEach((auto) => {
     const divisor = document.createElement('div');
     divisor.classList.add('divisor');
@@ -62,22 +73,91 @@ function generarAutos() {
     <h2>${auto.nombre} ${auto.modelo}</h2>
     <h3>Año: ${auto.año}</h3>
     <h4>U$D ${auto.precio}</h4>
-    <button id=${auto.id} class="btn-purchase"> PURCHASE NOW </button>
+    <button id=${auto.id} class="btn-purchase"> PURCHASE NOW 🛍</button>
     <button id=${auto.id} class="btn-add"> ADD TO CART 🛒</button> 
     `;
     pagInicial.appendChild(divisor);
   });
+  generarEventosAdd();
+  generarEventosPurchase();
+};
+
+function generarPorCategory(categoryName) {
+  limpiar();
+  const categoriaFiltrada = array.filter(
+    (autos) => autos.nombre == categoryName
+  );
+  if (categoriaFiltrada.length > 0) {
+    categoriaFiltrada.forEach((auto) => {
+      const divisor = document.createElement('div');
+      divisor.classList.add('divisor');
+      divisor.innerHTML = `
+        <img src=${auto.img} alt=${auto.nombre} class="img-car">
+        <h2>${auto.nombre} ${auto.modelo}</h2>
+        <h3>Año: ${auto.año}</h3>
+        <h4>U$D ${auto.precio}</h4>
+        <button id=${auto.id} class="btn-purchase"> PURCHASE NOW 🛍</button>
+        <button id=${auto.id} class="btn-add"> ADD TO CART 🛒</button> 
+        `;
+      pagInicial.appendChild(divisor);
+    });
+  } else {
+    const divisor = document.createElement('div');
+    divisor.classList.add('divisor');
+    divisor.innerHTML = `<p>Se desconoce la categoría</p>`;
+    pagInicial.appendChild(divisor);
+  }
+  contenidoGenerado = true;
+  generarEventosAdd();
+  generarEventosPurchase();
 }
 
-//add to cart
-const botoncito = document.querySelectorAll('.btn-add');
+const limpiar = () => {
+  while (pagInicial.firstChild) {
+    pagInicial.removeChild(pagInicial.firstChild);
+  }
+};
+
+const generarEventosAdd = () => {
+  const botonsAdd = document.querySelectorAll('.btn-add');
+  botonsAdd.forEach((btn) => {
+    btn.removeEventListener('click', addToCart);
+    btn.addEventListener('click', addToCart);
+  });
+};
+
+const generarEventosPurchase = () => {
+  const btnPurchase = document.querySelectorAll('.btn-purchase');
+  btnPurchase.forEach((btn) => {
+    btn.removeEventListener('click', purchaseCar);
+    btn.addEventListener('click', purchaseCar);
+  });
+};
+
+function categoriasBoton() {
+  const categorias = array.map((auto) => auto.nombre);
+  const categoriasData = [...new Set(categorias)];
+  botonFilter.forEach((botoncito, index) => {
+    //se le pasan 2 parámetros, filtro e index
+    botoncito.innerText = categoriasData[index]; //por cada botoncito, se le hace un index
+    botoncito.addEventListener('click', () => {
+      generarPorCategory(categoriasData[index]);
+      contenidoGenerado = true;
+    });
+  });
+}
+
 botoncito.forEach((btn) => {
   btn.addEventListener('click', addToCart);
 });
 
-const botoncitoCompra = document.querySelectorAll('.btn-purchase');
 botoncitoCompra.forEach((btn) => {
   btn.addEventListener('click', purchaseCar);
+});
+
+botonGenerarTodas.addEventListener('click', () => {
+  generarAllCategories();
+  contenidoGenerado = true;
 });
 
 function addToCart(e) {
@@ -111,24 +191,22 @@ function addToCart(e) {
   }
 }
 
-const divDetalle = document.getElementById('pagina-detail');
-
 function purchaseCar(e) {
   const paginaDetail = document.createElement('div');
   paginaDetail.classList.add('pagina-detalle');
   const autoAComprar = array.find((auto) => auto.id === parseInt(e.target.id));
   paginaDetail.innerHTML = `<div>
-  <button class="back">&#8592 ATRÁS </button>
-  </div>
-  <img src=${autoAComprar.img}>
-  <h1>${autoAComprar.nombre}</h1>
-                            <h2>${autoAComprar.modelo}</h2>
-                            <p>${autoAComprar.descripcion}</p>
-                            <div class="btn-product-detail-div">
-                            <button class="btn-product-detail-contact"> CONTACTARME CON EL VENDEDOR </button>
-                            <button class="btn-product-detail-add-to-cart" id=${autoAComprar.id}> AGREGAR A MI CARRITO </button>
-                            </div>
-                            `;
+      <button class="back">&#8592 ATRÁS </button>
+      </div>
+      <img src=${autoAComprar.img}>
+      <h1>${autoAComprar.nombre}</h1>
+      <h2>${autoAComprar.modelo}</h2>
+      <p>${autoAComprar.descripcion}</p>
+      <div class="btn-product-detail-div">
+      <button class="btn-product-detail-contact"> CONTACTARME CON EL VENDEDOR </button>
+      <button class="btn-product-detail-add-to-cart" id=${autoAComprar.id}> AGREGAR A MI CARRITO </button>
+      </div>
+      `;
   divDetalle.append(paginaDetail);
   const botonBack = document.querySelectorAll('.back');
   botonBack.forEach((botoncitoAtrás) => {
@@ -143,9 +221,6 @@ function purchaseCar(e) {
   });
   appDiv.style.display = 'none';
 }
-
-const carrito = document.querySelector('.offcanvas-body');
-const titleCarrito = document.querySelector('.offcanvas-title');
 
 function actualizar() {
   carrito.innerHTML = '';
@@ -202,3 +277,5 @@ function vaciarCarrito() {
 }
 
 actualizar();
+categoriasBoton();
+generarAllCategories();

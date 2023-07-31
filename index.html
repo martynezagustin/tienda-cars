@@ -31,45 +31,48 @@
   ></script>
 
   <!-- OFF CANVAS -->
-  <a
-    class="btn btn-carrito"
-    style="
-      background-color: red;
-      margin: 20px;
-      color: white;
-      box-shadow: 0px 0px 12px 1px gray;
-    "
-    data-bs-toggle="offcanvas"
-    href="#offcanvasExample"
-    role="button"
-    aria-controls="offcanvasExample"
-  >
-    Mi carrito
-  </a>
-  <div
-    class="offcanvas offcanvas-start"
-    tabindex="-1"
-    id="offcanvasExample"
-    aria-labelledby="offcanvasExampleLabel"
-  >
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-        Carrito de productos
-      </h5>
-      <button
-        type="button"
-        class="btn-close text-reset"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
+  <header class="header">
+    <a
+      class="btn btn-carrito"
+      style="background-color: red; margin: 20px; color: white"
+      data-bs-toggle="offcanvas"
+      href="#offcanvasExample"
+      role="button"
+      aria-controls="offcanvasExample"
+    >
+      Mi carrito
+    </a>
+    <div class="container-button-filter">
+      <button class="button-filter"></button>
+      <button class="button-filter"></button>
+      <button class="button-filter"></button>
+      <button id="btn-generar-todas">Mostrar Todas las Categorías</button>
     </div>
-    <div class="offcanvas-body">
-      <div></div>
-      <button id="btn-empty-card" class="btn-empty-card btn btn-danger">
-        VACIAR CARRITO
-      </button>
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+          Carrito de productos
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div></div>
+        <button id="btn-empty-card" class="btn-empty-card btn btn-danger">
+          VACIAR CARRITO
+        </button>
+      </div>
     </div>
-  </div>
+  </header>
   <div id="pagina-inicial" class="pagina-inicial"></div>
 </div>
 <div id="pagina-detail"></div>

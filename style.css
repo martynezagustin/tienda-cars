@@ -1,6 +1,16 @@
 body {
   font-family: 'Outfit', sans-serif;
 }
+.container-button-filter {
+  display: flex;
+  flex-wrap: wrap;
+}
+.header {
+  background-color: rgb(40, 40, 40);
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 .pagina-inicial {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
@@ -8,11 +18,20 @@ body {
   grid-gap: 1rem;
 }
 .divisor {
-  background-color: rgb(0, 0, 0);
-  padding: 20px;
-  margin: 1rem;
+  background-color: rgb(30, 30, 30);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0.5rem;
   color: whitesmoke;
   border-radius: 10px;
+}
+.divisor:hover {
+  transform: scale(1.03, 1.03);
+  transition: 0.5s all;
+  box-shadow: 0px 0px 12px 1px rgb(143, 143, 143);
+  filter: blur(0.2px);
 }
 .divisor button {
   border: none;
@@ -31,11 +50,23 @@ body {
 
 .img-car {
   max-width: 100%;
-  border: 0.1px solid white;
   border-radius: 10px;
 }
 .imagen-auto-cart {
   width: 100%;
+}
+.button-filter,
+#btn-generar-todas {
+  padding: 0.6rem;
+  margin: 0.4rem;
+  border-radius: 5px;
+  border: none;
+}
+.button-filter:active,
+#btn-generar-todas:active {
+  color: white;
+  background-color: brown;
+  transition: 0.1s all;
 }
 .pagina-detalle {
   padding: 10px;
@@ -101,4 +132,14 @@ body {
   box-shadow: 0px 0px 12px 1px gray;
   margin-bottom: 1rem;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 645px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .container-button-filter {
+    flex-direction: column;
+  }
 }
