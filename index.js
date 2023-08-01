@@ -47,6 +47,16 @@ let array = [
       'Uf un sanderito como el de la tía es el ideal para viajes de larga distancia. Viaja a Buenos Aires, Tucumán, o La Quiaca con este fenomenal vehículo.',
     precio: parseFloat(13000),
   },
+  {
+    id: 5,
+    img: 'https://images7.alphacoders.com/922/thumb-1920-922619.jpg',
+    nombre: 'Ford',
+    modelo: 'Fiesta',
+    año: 2017,
+    descripcion:
+      'El fiestita como el de la madre de Bau es un autazo. Da lujuria, modernidad y simpatía para romper las calles con la pisteada.',
+    precio: parseFloat(19000),
+  },
 ];
 
 let autosCart = [];
