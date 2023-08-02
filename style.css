@@ -137,6 +137,9 @@
   border-radius: 10px;
   background-color: rgb(40, 40, 40);
 }
+.p-quantity-cart {
+  margin: 0% !important;
+}
 .card-carrito img {
   margin-bottom: 1rem;
   border-radius: 10px;

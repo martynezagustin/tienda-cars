@@ -196,7 +196,7 @@ function addToCart(e) {
       },
       duration: 2000,
     }).showToast();
-    actualizar();
+    actualizarCarrito();
   } else {
     Toastify({
       text:
@@ -212,7 +212,7 @@ function addToCart(e) {
       ...autoEncontrado,
       quantity: 1,
     });
-    actualizar();
+    actualizarCarrito();
   }
 }
 
@@ -247,7 +247,7 @@ function purchaseCar(e) {
   appDiv.style.display = 'none';
 }
 
-function actualizar() {
+function actualizarCarrito() {
   carrito.innerHTML = '';
   titleCarrito.innerHTML = `Carrito de productos (${autosCart.length})`;
   if (autosCart.length === 0) {
@@ -266,8 +266,9 @@ function actualizar() {
       card.innerHTML = ` <img src=${auto.img} class="imagen-auto-cart">
       <p>${auto.nombre}</p>
       <p><u>Precio unitario:</u> ${auto.precio} USD</p>
-      <p><u>Descripción:</u> <b>${auto.descripcion}</b></p>
-      <div class="d-flex align-items-center">
+      <p><u>Descripción:</u> ${auto.descripcion}</p>
+      <div class="d-flex align-items-center mb-2">
+      <p class="p-quantity-cart"> Cantidad </p>
       <button class="btn-decrease-quantity" data-id=${auto.id}>-</button>
       <span>${auto.quantity}</span>
       <button class="btn-increment-quantity" data-id=${auto.id}>+</button>
@@ -310,7 +311,7 @@ function eliminarAuto(e) {
   let confirmar = confirm('Deseas remover este auto?');
   if (confirmar) {
     alert('Eliminado con éxito');
-    actualizar();
+    actualizarCarrito();
   }
 }
 
@@ -319,7 +320,7 @@ function vaciarCarrito() {
   if (confirmar) {
     autosCart.splice(0, autosCart.length);
     alert('Carrito eliminado con éxito.');
-    actualizar();
+    actualizarCarrito();
   }
 }
 
@@ -329,7 +330,7 @@ function decreaseQuantity(e) {
   );
   if (autoDecrease.quantity > 1) {
     autoDecrease.quantity--;
-    actualizar();
+    actualizarCarrito();
   }
 }
 
@@ -339,10 +340,10 @@ function incrementQuantity(e) {
   );
   if (autoIncrement) {
     autoIncrement.quantity++;
-    actualizar();
+    actualizarCarrito();
   }
 }
 
-actualizar();
+actualizarCarrito();
 categoriasBoton();
 generarAllCategories();
