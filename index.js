@@ -57,6 +57,16 @@ let array = [
       'El fiestita como el de la madre de Bau es un autazo. Da lujuria, modernidad y simpatía para romper las calles con la pisteada.',
     precio: parseFloat(19000),
   },
+  {
+    id: 6,
+    img: 'https://images6.alphacoders.com/490/490703.jpg',
+    nombre: 'Ford',
+    modelo: 'Focus',
+    año: 2015,
+    descripcion:
+      'Pibe el FOCUS que autito pensar que la Clau si hubiese seguido como docente se compraba uno de estos y nos íbamos a pasear a Recoleta.',
+    precio: parseFloat(16000),
+  },
 ];
 
 let autosCart = [];
@@ -255,14 +265,19 @@ function actualizar() {
       card.classList.add('card-carrito');
       card.innerHTML = ` <img src=${auto.img} class="imagen-auto-cart">
       <p>${auto.nombre}</p>
-      <p><u>Precio:</u> ${auto.precio} USD</p>
+      <p><u>Precio unitario:</u> ${auto.precio} USD</p>
       <p><u>Descripción:</u> <b>${auto.descripcion}</b></p>
       <div class="d-flex align-items-center">
       <button class="btn-decrease-quantity" data-id=${auto.id}>-</button>
       <span>${auto.quantity}</span>
       <button class="btn-increment-quantity" data-id=${auto.id}>+</button>
       </div>
-      <button class="btn-delete-car btn btn-danger" data-id=${auto.id}> ELIMINAR </button>
+      <div>
+      <span>Total: ${auto.quantity * auto.precio}</span>
+      </div>
+      <button class="btn-delete-car btn btn-danger" data-id=${
+        auto.id
+      }> ELIMINAR </button>
       `;
       carrito.append(card);
       const botonEliminar = document.querySelectorAll('.btn-delete-car');
