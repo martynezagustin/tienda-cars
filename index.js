@@ -174,17 +174,19 @@ function addToCart(e) {
   const autoEncontrado = array.find(
     (auto) => auto.id === parseInt(e.target.id)
   );
-  const autoExistente = autosCart.some(
+  let autoExistente = autosCart.find(
     (auto) => auto.id === parseInt(e.target.id)
   );
   if (autoExistente) {
+    autoExistente.quantity++;
     Toastify({
-      text: '¿Cómo vas a agregar un auto dos veces bobo?',
+      text: 'Cantidad incrementada 😁🤝🏻',
       style: {
-        background: 'red',
+        background: 'crimson',
       },
       duration: 2000,
     }).showToast();
+    actualizar();
   } else {
     Toastify({
       text:
@@ -196,7 +198,10 @@ function addToCart(e) {
         background: 'green',
       },
     }).showToast();
-    autosCart.push(autoEncontrado);
+    autosCart.push({
+      ...autoEncontrado,
+      quantity: 1,
+    });
     actualizar();
   }
 }
@@ -252,12 +257,29 @@ function actualizar() {
       <p>${auto.nombre}</p>
       <p><u>Precio:</u> ${auto.precio} USD</p>
       <p><u>Descripción:</u> <b>${auto.descripcion}</b></p>
+      <div class="d-flex align-items-center">
+      <button class="btn-decrease-quantity" data-id=${auto.id}>-</button>
+      <span>${auto.quantity}</span>
+      <button class="btn-increment-quantity" data-id=${auto.id}>+</button>
+      </div>
       <button class="btn-delete-car btn btn-danger" data-id=${auto.id}> ELIMINAR </button>
       `;
       carrito.append(card);
       const botonEliminar = document.querySelectorAll('.btn-delete-car');
       botonEliminar.forEach((botoncito) => {
         botoncito.addEventListener('click', eliminarAuto);
+      });
+      const buttonDecreaseQuantity = document.querySelectorAll(
+        '.btn-decrease-quantity'
+      );
+      buttonDecreaseQuantity.forEach((btn) => {
+        btn.addEventListener('click', decreaseQuantity);
+      });
+      const buttonIncrementQuantity = document.querySelectorAll(
+        '.btn-increment-quantity'
+      );
+      buttonIncrementQuantity.forEach((btn) => {
+        btn.addEventListener('click', incrementQuantity);
       });
     });
     carrito.appendChild(btnEmpty);
@@ -282,6 +304,26 @@ function vaciarCarrito() {
   if (confirmar) {
     autosCart.splice(0, autosCart.length);
     alert('Carrito eliminado con éxito.');
+    actualizar();
+  }
+}
+
+function decreaseQuantity(e) {
+  const autoDecrease = autosCart.find(
+    (auto) => auto.id === parseInt(e.target.dataset.id)
+  );
+  if (autoDecrease.quantity > 1) {
+    autoDecrease.quantity--;
+    actualizar();
+  }
+}
+
+function incrementQuantity(e) {
+  const autoIncrement = autosCart.find(
+    (auto) => auto.id === parseInt(e.target.dataset.id)
+  );
+  if (autoIncrement) {
+    autoIncrement.quantity++;
     actualizar();
   }
 }

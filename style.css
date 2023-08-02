@@ -16,9 +16,12 @@
 .nav-link {
   color: white !important;
 }
+.navbar-toggler {
+  background-color: white;
+}
 .pagina-inicial {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
   grid-template-rows: auto;
   grid-gap: 1rem;
 }
@@ -128,21 +131,23 @@
   flex-direction: column;
 }
 .card-carrito {
-  margin: 0.3em;
+  margin: 0.3em 0rem 0.3rem 0rem;
   color: black;
   padding: 1rem;
   border-radius: 10px;
   background-color: rgb(179, 179, 179);
 }
-.card-carrito:hover {
-  background-color: black;
-  color: white;
-  transition: 0.5s all;
-}
 .card-carrito img {
   box-shadow: 0px 0px 12px 1px gray;
   margin-bottom: 1rem;
   border-radius: 10px;
+}
+.btn-decrease-quantity,
+.btn-increment-quantity {
+  margin: 0.3rem;
+  border-radius: 5px;
+  color: crimson;
+  border: none;
 }
 
 @media screen and (max-width: 645px) {
