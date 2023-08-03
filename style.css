@@ -39,7 +39,8 @@
   transform: scale(1.03, 1.03);
   transition: 0.5s all;
   box-shadow: 0px 0px 12px 1px rgb(143, 143, 143);
-  filter: blur(0.2px);
+  background-color: rgb(45, 45, 45);
+  filter: blur(0.14px);
 }
 .divisor button {
   border: none;
@@ -132,23 +133,24 @@
 }
 .card-carrito {
   margin: 0.3em 0rem 0.3rem 0rem;
-  color: whitesmoke;
+  color: black;
   padding: 1rem;
   border-radius: 10px;
-  background-color: rgb(40, 40, 40);
-}
-.p-quantity-cart {
-  margin: 0% !important;
+  background-color: rgb(179, 179, 179);
 }
 .card-carrito img {
+  box-shadow: 0px 0px 12px 1px gray;
   margin-bottom: 1rem;
   border-radius: 10px;
 }
+.container-button-quantity {
+  margin: 0.5rem 0rem 1rem 0rem;
+}
 .btn-decrease-quantity,
 .btn-increment-quantity {
-  margin: 0.3rem;
   border-radius: 5px;
-  color: crimson;
+  color: rgb(255, 146, 167);
+  background-color: rgb(20, 20, 20);
   border: none;
 }
 

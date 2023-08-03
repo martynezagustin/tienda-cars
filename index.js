@@ -10,67 +10,67 @@ let array = [
   {
     id: 1,
     img: 'https://acnews.blob.core.windows.net/imgnews/medium/NAZ_852c4c2a6c234c6bbad3678960b2f86b.jpg',
-    nombre: 'Ford',
-    modelo: 'Mustang',
-    año: 2009,
-    descripcion:
+    name: 'Ford',
+    model: 'Mustang',
+    year: 2009,
+    description:
       "Un auto para volarse los dientes. 'El Mustang' por su tradicional forma de llamarse es un vehículo de prestigio en el ámbito social.",
-    precio: parseFloat(28000),
+    price: parseFloat(28000),
   },
   {
     id: 2,
     img: 'https://cdn.motor1.com/images/mgl/bgzV2k/s1/2024-chevrolet-corvette-e-ray.jpg',
-    nombre: 'Chevrolet',
-    modelo: 'Corvette',
-    año: 2011,
-    descripcion:
+    name: 'Chevrolet',
+    model: 'Corvette',
+    year: 2011,
+    description:
       'Chevrolet Corvette, del año 2011, es hijo del rigor. Desde su salida ha causado buen impacto.',
-    precio: parseFloat(22000),
+    price: parseFloat(22000),
   },
   {
     id: 3,
     img: 'https://cdn.motor1.com/images/mgl/Mk3qz6/s1/renault-12-tl-de-1994-en-la-planta-de-santa-isabel-cordoba.-ph-renault-argentina..jpg',
-    nombre: 'Renault',
-    modelo: '12',
-    año: 1971,
-    descripcion:
+    name: 'Renault',
+    model: '12',
+    year: 1971,
+    description:
       'Renositoooo papá un renault 12 para ser felíz en unas vacaciones en la costa con las reposeras en el baúl.',
-    precio: parseFloat(7000),
+    price: parseFloat(7000),
   },
   {
     id: 4,
     img: 'https://cdn.motor1.com/images/mgl/P33GEr/s1/004982_hernandopollicelli_sandero-rs-grapsas.webp',
-    nombre: 'Renault',
-    modelo: 'Sandero',
-    año: 2011,
-    descripcion:
+    name: 'Renault',
+    model: 'Sandero',
+    year: 2011,
+    description:
       'Uf un sanderito como el de la tía es el ideal para viajes de larga distancia. Viaja a Buenos Aires, Tucumán, o La Quiaca con este fenomenal vehículo.',
-    precio: parseFloat(13000),
+    price: parseFloat(13000),
   },
   {
     id: 5,
     img: 'https://images7.alphacoders.com/922/thumb-1920-922619.jpg',
-    nombre: 'Ford',
-    modelo: 'Fiesta',
-    año: 2017,
-    descripcion:
+    name: 'Ford',
+    model: 'Fiesta',
+    year: 2017,
+    description:
       'El fiestita como el de la madre de Bau es un autazo. Da lujuria, modernidad y simpatía para romper las calles con la pisteada.',
-    precio: parseFloat(19000),
+    price: parseFloat(19000),
   },
   {
     id: 6,
     img: 'https://images6.alphacoders.com/490/490703.jpg',
-    nombre: 'Ford',
-    modelo: 'Focus',
-    año: 2015,
-    descripcion:
-      'Pibe el FOCUS que autito pensar que la Clau si hubiese seguido como docente se compraba uno de estos y nos íbamos a pasear a Recoleta.',
-    precio: parseFloat(16000),
+    name: 'Ford',
+    model: 'Focus',
+    year: 2015,
+    description:
+      "El Focus autazo papá. Jerarquía, divinidad y trascendencia a las décadas del '10 pibeee que estás esperando.",
+    price: parseFloat(16000),
   },
 ];
 
 let autosCart = [];
-let contenidoGenerado = false;
+let contentGenerate = false;
 const carrito = document.querySelector('.offcanvas-body');
 const titleCarrito = document.querySelector('.offcanvas-title');
 const divDetalle = document.getElementById('pagina-detail');
@@ -84,63 +84,56 @@ const botoncitoCompra = document.querySelectorAll('.btn-purchase');
 const botonGenerarTodas = document.getElementById('btn-generar-todas');
 
 const generarAllCategories = () => {
-  limpiar();
+  clear();
   array.forEach((auto) => {
     const divisor = document.createElement('div');
     divisor.classList.add('divisor');
     divisor.innerHTML = `
-    <img src=${auto.img} alt=${auto.nombre} class="img-car">
-    <h2>${auto.nombre} ${auto.modelo}</h2>
-    <h3>Año: ${auto.año}</h3>
-    <h4>U$D ${auto.precio}</h4>
+    <img src=${auto.img} alt=${auto.model} class="img-car">
+    <h2>${auto.name} ${auto.model}</h2>
+    <h3>Year: ${auto.year}</h3>
+    <h4>U$D ${auto.price}</h4>
     <button id=${auto.id} class="btn-purchase"> PURCHASE NOW 🛍</button>
     <button id=${auto.id} class="btn-add"> ADD TO CART 🛒</button> 
     `;
     pagInicial.appendChild(divisor);
   });
-  generarEventosAdd();
+  generateEventsAdd();
   generarEventosPurchase();
 };
 
 function generarPorCategory(categoryName) {
-  limpiar();
-  const categoriaFiltrada = array.filter(
-    (autos) => autos.nombre == categoryName
-  );
-  if (categoriaFiltrada.length > 0) {
-    categoriaFiltrada.forEach((auto) => {
+  clear();
+  const categoryFilter = array.filter((cars) => cars.name == categoryName);
+  if (categoryFilter.length > 0) {
+    categoryFilter.forEach((car) => {
       const divisor = document.createElement('div');
       divisor.classList.add('divisor');
       divisor.innerHTML = `
-        <img src=${auto.img} alt=${auto.nombre} class="img-car">
-        <h2>${auto.nombre} ${auto.modelo}</h2>
-        <h3>Año: ${auto.año}</h3>
-        <h4>U$D ${auto.precio}</h4>
-        <button id=${auto.id} class="btn-purchase"> PURCHASE NOW 🛍</button>
-        <button id=${auto.id} class="btn-add"> ADD TO CART 🛒</button> 
+        <img src=${car.img} alt=${car.model} class="img-car">
+        <h2>${car.name} ${car.model}</h2>
+        <h3>Year: ${car.year}</h3>
+        <h4>U$D ${car.price}</h4>
+        <button id=${car.id} class="btn-purchase"> PURCHASE NOW 🛍</button>
+        <button id=${car.id} class="btn-add"> ADD TO CART 🛒</button> 
         `;
       pagInicial.appendChild(divisor);
     });
-  } else {
-    const divisor = document.createElement('div');
-    divisor.classList.add('divisor');
-    divisor.innerHTML = `<p>Se desconoce la categoría</p>`;
-    pagInicial.appendChild(divisor);
   }
-  contenidoGenerado = true;
-  generarEventosAdd();
+  contentGenerate = true;
+  generateEventsAdd();
   generarEventosPurchase();
 }
 
-const limpiar = () => {
+const clear = () => {
   while (pagInicial.firstChild) {
     pagInicial.removeChild(pagInicial.firstChild);
   }
 };
 
-const generarEventosAdd = () => {
-  const botonsAdd = document.querySelectorAll('.btn-add');
-  botonsAdd.forEach((btn) => {
+const generateEventsAdd = () => {
+  const buttonsAdd = document.querySelectorAll('.btn-add');
+  buttonsAdd.forEach((btn) => {
     btn.removeEventListener('click', addToCart);
     btn.addEventListener('click', addToCart);
   });
@@ -155,14 +148,14 @@ const generarEventosPurchase = () => {
 };
 
 function categoriasBoton() {
-  const categorias = array.map((auto) => auto.nombre);
-  const categoriasData = [...new Set(categorias)];
-  botonFilter.forEach((botoncito, index) => {
+  const categories = array.map((car) => car.name);
+  const categoriesData = [...new Set(categories)];
+  botonFilter.forEach((btn, index) => {
     //se le pasan 2 parámetros, filtro e index
-    botoncito.innerText = categoriasData[index]; //por cada botoncito, se le hace un index
-    botoncito.addEventListener('click', () => {
-      generarPorCategory(categoriasData[index]);
-      contenidoGenerado = true;
+    btn.innerText = categoriesData[index]; //por cada botoncito, se le hace un index
+    btn.addEventListener('click', () => {
+      generarPorCategory(categoriesData[index]);
+      contentGenerate = true;
     });
   });
 }
@@ -177,59 +170,51 @@ botoncitoCompra.forEach((btn) => {
 
 botonGenerarTodas.addEventListener('click', () => {
   generarAllCategories();
-  contenidoGenerado = true;
+  contentGenerate = true;
 });
 
 function addToCart(e) {
-  const autoEncontrado = array.find(
-    (auto) => auto.id === parseInt(e.target.id)
-  );
-  let autoExistente = autosCart.find(
-    (auto) => auto.id === parseInt(e.target.id)
-  );
-  if (autoExistente) {
-    autoExistente.quantity++;
+  const carFound = array.find((car) => car.id === parseInt(e.target.id));
+  let carExist = autosCart.find((auto) => auto.id === parseInt(e.target.id));
+  if (carExist) {
+    carExist.quantity++;
     Toastify({
-      text: 'Cantidad incrementada 😁🤝🏻',
+      text: 'Increased quantity 😁🤝🏻',
       style: {
         background: 'crimson',
       },
       duration: 2000,
     }).showToast();
-    actualizarCarrito();
+    update();
   } else {
     Toastify({
-      text:
-        autoEncontrado.nombre +
-        ' ' +
-        autoEncontrado.modelo +
-        ' añadido al carrito 🚘',
+      text: carFound.name + ' ' + carFound.model + ' added to cart 🚘',
       style: {
         background: 'green',
       },
     }).showToast();
     autosCart.push({
-      ...autoEncontrado,
+      ...carFound,
       quantity: 1,
     });
-    actualizarCarrito();
+    update();
   }
 }
 
 function purchaseCar(e) {
   const paginaDetail = document.createElement('div');
   paginaDetail.classList.add('pagina-detalle');
-  const autoAComprar = array.find((auto) => auto.id === parseInt(e.target.id));
+  const carToBuy = array.find((car) => car.id === parseInt(e.target.id));
   paginaDetail.innerHTML = `<div>
-      <button class="back">&#8592 ATRÁS </button>
+      <button class="back">&#8592 BACK </button>
       </div>
-      <img src=${autoAComprar.img}>
-      <h1>${autoAComprar.nombre}</h1>
-      <h2>${autoAComprar.modelo}</h2>
-      <p>${autoAComprar.descripcion}</p>
+      <img src=${carToBuy.img}>
+      <h1>${carToBuy.name}</h1>
+      <h2>${carToBuy.model}</h2>
+      <p>${carToBuy.description}</p>
       <div class="btn-product-detail-div">
-      <button class="btn-product-detail-contact"> CONTACTARME CON EL VENDEDOR </button>
-      <button class="btn-product-detail-add-to-cart" id=${autoAComprar.id}> AGREGAR A MI CARRITO </button>
+      <button class="btn-product-detail-contact"> CONTACT ME WITH THE SELLER </button>
+      <button class="btn-product-detail-add-to-cart" id=${carToBuy.id}> ADD TO CART </button>
       </div>
       `;
   divDetalle.append(paginaDetail);
@@ -247,7 +232,7 @@ function purchaseCar(e) {
   appDiv.style.display = 'none';
 }
 
-function actualizarCarrito() {
+function update() {
   carrito.innerHTML = '';
   titleCarrito.innerHTML = `Carrito de productos (${autosCart.length})`;
   if (autosCart.length === 0) {
@@ -264,18 +249,15 @@ function actualizarCarrito() {
       const card = document.createElement('div');
       card.classList.add('card-carrito');
       card.innerHTML = ` <img src=${auto.img} class="imagen-auto-cart">
-      <p>${auto.nombre}</p>
-      <p><u>Precio unitario:</u> ${auto.precio} USD</p>
-      <p><u>Descripción:</u> ${auto.descripcion}</p>
-      <div class="d-flex align-items-center mb-2">
-      <p class="p-quantity-cart"> Cantidad </p>
+      <p>${auto.name}</p>
+      <p><u>Precio:</u> USD ${auto.price} </p>
+      <p><u>Descripción:</u> <b>${auto.description}</b></p>
+      <div class="d-flex align-items-center container-button-quantity">
       <button class="btn-decrease-quantity" data-id=${auto.id}>-</button>
-      <span>${auto.quantity}</span>
+      <span class="p-1">${auto.quantity}</span>
       <button class="btn-increment-quantity" data-id=${auto.id}>+</button>
       </div>
-      <div>
-      <span>Total: ${auto.quantity * auto.precio}</span>
-      </div>
+      <p>Total: USD ${auto.price * auto.quantity}</p>
       <button class="btn-delete-car btn btn-danger" data-id=${
         auto.id
       }> ELIMINAR </button>
@@ -303,15 +285,15 @@ function actualizarCarrito() {
 }
 
 function eliminarAuto(e) {
-  const autoEncontrado = autosCart.find(
+  const carFound = autosCart.find(
     (autito) => autito.id === parseInt(e.target.dataset.id)
   );
-  const index = autosCart.indexOf(autoEncontrado);
+  const index = autosCart.indexOf(carFound);
   autosCart.splice(index, 1);
   let confirmar = confirm('Deseas remover este auto?');
   if (confirmar) {
     alert('Eliminado con éxito');
-    actualizarCarrito();
+    update();
   }
 }
 
@@ -320,7 +302,7 @@ function vaciarCarrito() {
   if (confirmar) {
     autosCart.splice(0, autosCart.length);
     alert('Carrito eliminado con éxito.');
-    actualizarCarrito();
+    update();
   }
 }
 
@@ -330,7 +312,7 @@ function decreaseQuantity(e) {
   );
   if (autoDecrease.quantity > 1) {
     autoDecrease.quantity--;
-    actualizarCarrito();
+    update();
   }
 }
 
@@ -340,10 +322,10 @@ function incrementQuantity(e) {
   );
   if (autoIncrement) {
     autoIncrement.quantity++;
-    actualizarCarrito();
+    update();
   }
 }
 
-actualizarCarrito();
+update();
 categoriasBoton();
 generarAllCategories();
