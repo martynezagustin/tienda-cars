@@ -171,8 +171,9 @@ function categoriasBoton() {
     anchor.classList.add('button-filter');
     li.appendChild(anchor);
     anchor.innerText = categoryName;
-    containerBtnFilter.appendChild(anchor);
-    anchor.addEventListener('click', () => {
+    containerBtnFilter.appendChild(li);
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
       generarPorCategory(categoryName);
       contentGenerate = true;
     });

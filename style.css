@@ -1,11 +1,6 @@
 * {
   font-family: 'Jost', sans-serif;
 }
-
-.container-button-filter {
-  display: flex;
-  flex-wrap: wrap;
-}
 .header {
   margin-bottom: 1rem;
 }
