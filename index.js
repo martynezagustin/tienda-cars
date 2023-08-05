@@ -69,7 +69,7 @@ let array = [
   },
 ];
 
-let autosCart = [];
+let autosCart = JSON.parse(localStorage.getItem('cars')) || [];
 let contentGenerate = false;
 const carrito = document.querySelector('.offcanvas-body');
 const titleCarrito = document.querySelector('.offcanvas-title');
@@ -82,6 +82,8 @@ const botoncito = document.querySelectorAll('.btn-add');
 const botoncitoCompra = document.querySelectorAll('.btn-purchase');
 //boton de filtrar todas
 const botonGenerarTodas = document.getElementById('btn-generar-todas');
+//span de total carrito
+const spanTotalCart = document.querySelector('.cart-img-total-products');
 
 const generarAllCategories = () => {
   clear();
@@ -197,6 +199,7 @@ function addToCart(e) {
       ...carFound,
       quantity: 1,
     });
+    localStorage.setItem('cars', JSON.stringify(autosCart));
     update();
   }
 }
@@ -281,7 +284,9 @@ function update() {
       });
     });
     carrito.appendChild(btnEmpty);
+    localStorage.setItem('cars', JSON.stringify(autosCart));
   }
+  spanTotalCart.innerHTML = `${autosCart.length}`;
 }
 
 function eliminarAuto(e) {
@@ -294,6 +299,7 @@ function eliminarAuto(e) {
   if (confirmar) {
     alert('Eliminado con éxito');
     update();
+    localStorage.setItem('cars', JSON.stringify(autosCart));
   }
 }
 
@@ -303,6 +309,7 @@ function vaciarCarrito() {
     autosCart.splice(0, autosCart.length);
     alert('Carrito eliminado con éxito.');
     update();
+    localStorage.setItem('cars', JSON.stringify(autosCart));
   }
 }
 
@@ -313,6 +320,7 @@ function decreaseQuantity(e) {
   if (autoDecrease.quantity > 1) {
     autoDecrease.quantity--;
     update();
+    localStorage.setItem('cars', JSON.stringify(autosCart));
   }
 }
 
@@ -323,6 +331,7 @@ function incrementQuantity(e) {
   if (autoIncrement) {
     autoIncrement.quantity++;
     update();
+    localStorage.setItem('cars', JSON.stringify(autosCart));
   }
 }
 

@@ -19,6 +19,11 @@
 .navbar-toggler {
   background-color: white;
 }
+.cart-img-total-products {
+  background-color: red;
+  padding: 4px;
+  border-radius: 10px;
+}
 .pagina-inicial {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
@@ -26,7 +31,8 @@
   grid-gap: 1rem;
 }
 .divisor {
-  background-color: rgb(30, 30, 30);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+    url(https://img.freepik.com/vector-gratis/fondo-futurista-tecnologia-degradada_23-2149122416.jpg);
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -39,7 +45,6 @@
   transform: scale(1.03, 1.03);
   transition: 0.5s all;
   box-shadow: 0px 0px 12px 1px rgb(143, 143, 143);
-  background-color: rgb(45, 45, 45);
   filter: blur(0.14px);
 }
 .divisor button {
@@ -132,7 +137,7 @@
   flex-direction: column;
 }
 .card-carrito {
-  margin: 0.3em 0rem 0.3rem 0rem;
+  margin: 0.8em 0rem 0.3rem 0rem;
   color: black;
   padding: 1rem;
   border-radius: 10px;
