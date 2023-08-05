@@ -268,7 +268,7 @@ function update() {
       (total, auto) => (total += auto.quantity * auto.price),
       0
     );
-    totalPurchaseP.innerText = 'Total a pagar: U$D ' + totalPurchase;
+    totalPurchaseP.innerText = 'TOTAL A PAGAR: U$D ' + totalPurchase;
     btnEmpty.textContent = 'VACIAR CARRITO';
     btnEmpty.classList.add('btn-danger');
     btnEmpty.classList.add('btn');
