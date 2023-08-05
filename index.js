@@ -67,6 +67,16 @@ let array = [
       "El Focus autazo papá. Jerarquía, divinidad y trascendencia a las décadas del '10 pibeee que estás esperando.",
     price: parseFloat(16000),
   },
+  {
+    id: 7,
+    img: 'https://s1.1zoom.me/big7/813/Subaru_Impreza_STI_Blue_565047_1920x1080.jpg',
+    name: 'Subaru',
+    model: 'Impreza',
+    year: 2019,
+    description:
+      'Subaru un autito que siempre fue still underrated en el NFS, pero para mí locura lo que pisa.',
+    price: parseFloat(24000),
+  },
 ];
 
 let autosCart = JSON.parse(localStorage.getItem('cars')) || [];
@@ -84,6 +94,7 @@ const botoncitoCompra = document.querySelectorAll('.btn-purchase');
 const botonGenerarTodas = document.getElementById('btn-generar-todas');
 //span de total carrito
 const spanTotalCart = document.querySelector('.cart-img-total-products');
+const containerBtnFilter = document.querySelector('.container-button-filter');
 
 const generarAllCategories = () => {
   clear();
@@ -152,11 +163,17 @@ const generarEventosPurchase = () => {
 function categoriasBoton() {
   const categories = array.map((car) => car.name);
   const categoriesData = [...new Set(categories)];
-  botonFilter.forEach((btn, index) => {
+  categoriesData.forEach((categoryName) => {
     //se le pasan 2 parámetros, filtro e index
-    btn.innerText = categoriesData[index]; //por cada botoncito, se le hace un index
-    btn.addEventListener('click', () => {
-      generarPorCategory(categoriesData[index]);
+    const li = document.createElement('li');
+    const anchor = document.createElement('a');
+    anchor.classList.add('dropdown-item');
+    anchor.classList.add('button-filter');
+    li.appendChild(anchor);
+    anchor.innerText = categoryName;
+    containerBtnFilter.appendChild(anchor);
+    anchor.addEventListener('click', () => {
+      generarPorCategory(categoryName);
       contentGenerate = true;
     });
   });

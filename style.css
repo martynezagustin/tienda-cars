@@ -81,6 +81,7 @@
   background-color: rgb(255, 66, 66);
   color: white;
   filter: blur(0.2px);
+  cursor: pointer;
 }
 .button-filter:active,
 #btn-generar-todas:active {
