@@ -243,6 +243,14 @@ function update() {
   } else {
     //boton de vaciar carrito
     const btnEmpty = document.createElement('button');
+    //div del total
+    const totalPurchaseP = document.createElement('div');
+    totalPurchaseP.classList.add('mt-2');
+    const totalPurchase = autosCart.reduce(
+      (total, auto) => (total += auto.quantity * auto.price),
+      0
+    );
+    totalPurchaseP.innerText = 'Total a pagar: U$D ' + totalPurchase;
     btnEmpty.textContent = 'VACIAR CARRITO';
     btnEmpty.classList.add('btn-danger');
     btnEmpty.classList.add('btn');
@@ -284,6 +292,7 @@ function update() {
       });
     });
     carrito.appendChild(btnEmpty);
+    carrito.appendChild(totalPurchaseP);
     localStorage.setItem('cars', JSON.stringify(autosCart));
   }
   spanTotalCart.innerHTML = `${autosCart.length}`;
